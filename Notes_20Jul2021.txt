@@ -1,0 +1,185 @@
+Spring REST with spring boot
+	if you already know
+		Spring framework
+			DI
+			IOC
+	
+@Controller
+	when you created mvc projects
+	map url to method
+
+
+	@GetMapping("/hello")
+	public String home()
+	{
+		return "index";///	what is "index"?
+	}
+
+	@GetMapping("/hi")
+	@ResponseBody
+	public String hi()
+	{
+		return "Hello world";	//i want output to be printed as "Hello world"
+	}
+
+In REST API 
+	we will use @RestController
+
+
+
+What is @RestController
+this is almost like
+	@Controller + @ResponseBody
+
+that means, all the methods return the output rather than viewname
+
+		return "india"		//means, india is output. NOT a jsp file name
+
+
+How Spring MVC is different from Spring REST?
+	in MVC, we will have VIEW also.
+	in MVC, we do redirection
+	in MVC, we create complete project in java
+
+	in REST, we do not create VIEWs at all
+	in REST, we do not redirect
+	in REST, we create only back end part of the project
+
+	front end, in our syllabus, is Angular
+			HTML, CSS, JS, TS, BOOTSTRAP
+
+
+
+BaCK end will be
+	Spring boot rest api + mysql db
+
+
+REST
+	REpresentational State Transfer
+		is a kind of web service
+
+before REST was introduced,
+	SOAP web services were popular
+	2001 SOAP was introduced
+	that was the first time, interoperability was introduced
+		a web service is a program developed in any programming language
+		and can be accessed from any program developed in any language
+
+	There are some scenarios, where we cannot write some code.
+	example:
+		getting payment from customer using their credit/debit cards
+	how can you write code for this?
+	i can validate the card 
+		if card is not 16 digit, it is not visa card
+		i can write this code
+		but if it is 16 digit is it a valid card?
+		how to tell?
+		even if we find that it is valid card,
+		at that moment, is it expired?
+		credit limit is available?
+		
+	Some other enterpise has the database for that
+	we cannot access their database
+	
+	so we need some technique that they allow us to access their code through internet
+
+	now do you understand why we need webservice?
+
+	They can allow us to access only specific methods.
+	Controller
+		allows access to a specific method using URL
+
+by having an url for each method, we can control access to only specific code 
+	micro level access to webservice
+
+REST api
+	we compare REST with SOAP
+
+	SOAP is a protocol
+	REST is an architectural style		is not a protocol.
+		HTTP is the protocol
+
+	SOAP is heavy weight		
+		entire service (all methods) are accessible to the user
+	REST is light weight
+		every method separately have URL and are provided to the user
+
+REST
+	there are frameworks that help us to create a rest api
+	jersey
+	spring
+
+Spring boot is the easiest way to implement REST API
+rest api principles:
+---------------------
+	standarization of urls
+
+	http://localhost:8080/product
+
+GET	http://localhost:8080/product		returns all products
+GET	http://localhost:8080/product/1		return only 1 product
+POST	http://localhost:8080/product		adds a product
+PUT	http://localhost:8080/product		updates a product
+DELETE	http://localhost:8080/product/1		removes a product	
+
+PATCH	for partial updation		means only few of the fields are updated
+
+<FORM ACTION= METHOD="GET"		post also	but PUT 
+
+let us see some REST API already available
+--------------------------------------------
+fake rest api
+
+
+https://jsonplaceholder.typicode.com/todos/100
+
+THE url entered in the browser will be a GET request only
+POST
+PUT
+DELETE
+	these methods cannot be done by address bar of browser
+
+<form method=POST	is possible
+
+to test other methods, we use tools like postman
+
+
+Shall we create our own rest api now?
+1) spring boot project
+2) rest controller
+3) create methods mapped with GET POST PUT DELETE
+4) run this
+
+AJ028
+
+How will you create a spring boot project?
+	Please answer my question
+
+
+
+In every method, we write some messages for our debugging purpose
+
+	public void method()
+	{
+		System.out.println("Started");
+		.....
+	.	....
+
+		System.out.println("Ended");
+	}
+
+	System.out.println 
+		is not good idea for log entries because, they are displayed and vanished after next execution
+
+	Log entries can be stored in log files also
+	
+At this moment, we need to learn how to use log 4j
+	in our project
+
+	Spring boot starter (or starter-web) dependency is a collection of lot of dependencies
+		spring context
+		spring context support
+		aop
+
+		slf4j
+
