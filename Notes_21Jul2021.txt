@@ -1,0 +1,79 @@
+REST api
+	HTTP methods
+		GET
+		POST
+		PUT
+		DELETE
+
+We create one project per module
+	Product module
+	Customer module
+	User module
+
+each module can be created as a spring boot project
+	each rest api can act as 1 among the multiple microservices
+
+each project when we execute act as a micro service
+
+CRUD operations
+	create
+	read
+	read by id
+	update
+	delete
+
+do you know JPA repository?
+	jdbc template		we write SQL statements
+
+JPA repository			does not require SQL statements for basic operations
+				INSERT, UPDATE, DELETE, SELECT
+
+Entities become tables in the database
+Entities become class in the java program
+
+Employee
+	id
+	firstName
+	lastName
+	
+
+steps:
+	1) Entity class			Employee.java
+	2) jpa repository interface	EmployeeRepository.java			interface that extends jparepository
+	3) service class		EmployeeService.java			autowire the repo
+	4) controller class		EmployeeController.java			Rest Controller
+	5) test the rest api using 	Post Man
+
+
+While creating a spring boot project
+	if we add 
+		data JPA starter dependency
+	then before we run the project, we must configure the connection details
+	in application.properties
+
+	otherwise, the project wont run
+
+	1) ADD mysql dependency in pom.xml
+	2) in application.properties, configure the connection info
+		url
+		driver
+		username
+		password
+
+
+
+
+firstName
+	FIRST_NAME
+by using physical naming strategy to standard implementation
+	i am restricting this strategy. so leave it as it is
+
+	FIRSTNAME
+
+
+
+@Entity
+	means, this Employee class becomes a table in database named as EMPLOYEE table
+	if class name is Employee. But i want the table name to be EMP
+		@Table(name="EMP")
+
