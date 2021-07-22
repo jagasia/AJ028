@@ -1,0 +1,149 @@
+REST
+	@RestController
+		=@Controller + @ResponseBody
+	every method returns the result rather than the url or view or jsp or html file name
+
+	@PathVariable			product/1				product/{id}
+	@RequestBody
+	@RequestParam			when we want to access the <form> input elements
+					?key1=value1&key2=value2
+
+	@ExceptionHandler
+	@ControllerAdvice		handle events in a central location rather than in every method handling
+
+
+	200			OK		no issues
+	404			NOT FOUND
+	500
+	400
+
+	on understanding the HTTP status codes
+	
+@RequestMapping(method=RequestMethod.GET, value="/", consumes="text/json")		is same as below
+@GetMapping("/")						
+		but GetMapping does not offer much options
+
+
+
+@RestController
+@RequestMapping("/employee")
+public class EmployeeController
+{
+	@GetMapping("/all")
+	@GetMapping("/{id}")
+	@PostMapping("/add")
+}
+
+
+localhost:8080/employee/1
+localhost:8080/employee/all
+localhost:8080/employee/add
+
+when there are many controllers present in a project
+
+across all the controllers, the url must be unique
+
+
+@RestController
+@RequestMapping("/department")
+public class DepartmentController
+{
+	@GetMapping("/all")
+	@GetMapping("/{id}")
+	@PostMapping("/add")
+}
+
+localhost:8080/department/all
+localhost:8080/department/1
+localhost:8080/department/add
+
+REST principles
+
+
+JSON 
+	JavaScript Object Notation
+
+
+Jersey
+	RESTful webservices
+
+every method returns or accepts
+	produces or consumes
+
+	specify what type of data it consumes or produces
+
+
+a rest api can produce output in 
+	XML
+	Text
+	HTML
+	JSON
+		is the preferred format in Spring Boot Rest api
+
+/employee/1					path variable
+/employee/{id}
+/employee/add
+
+@PostMapping("/employee")
+public Employee addEmployee(@RequestBody Employee employee)//this object does not come from url of the browser
+								//so we need to annotate with @RequestBody
+
+@GetMapping("/employee/{id}/{x}")
+public Employee findEmployeeById(@PathVariable Long id, @PathVariable("x") Long id2)
+
+
+
+@Valid
+	if binding result has any errors, you redirect to same page
+
+
+--------------------------
+Git
+	Git Hub			anybody can sign up and create repositories	private/public 
+	Git Lab			(we use during our project phase)		private repository
+
+in GIT HUB, you are not supposed to signup using cognizant email.
+
+
+1) create an account in git hub using an email address
+2) login to the account
+3) create a repository
+4) go to settings
+5) manage access
+6) invite a collaborator using their email address (used by them to login to github)
+7) once they accept the invitation they can push or pull files to and fro the repository
+
+
+
+
+echo "# abcd" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jagasia/aj028demo1.git
+git push -u origin main
+
+Have you installed git in your computer?
+
+
+
+git clone
+	used first time only
+git pull
+	later to pull only the changes found in the remote repository and reflect it in the local repository
+git push
+	push the changes done in local repository to the remote repository
+	but before that pull and then push. so that changes found in the remote should be pulled before we push
+
+
+
+
+you create one repository in git hib
+	share the url to others
+		https://github.com/jagasia/abcd.git
+git clone https://github.com/jagasia/abcd.git
+do changes
+push them to remote repo
+
+others pull the changes to their local repos
