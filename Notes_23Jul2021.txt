@@ -1,0 +1,130 @@
+To create a repository in git hub
+invite collaborators
+clone a repository to local repo	(any folder where you have "git init" this will create a file .git which is invisible. You can delete it using 		rm in linux	del in windows		del .git)
+
+clone is used only the first time when we download a repo from remote (git hub) to local
+
+after some time, if any changes found in the remote repo,
+we can pull incremental changes happened there to local
+
+if we have done some changes in local repository, we can
+	push the changes to the remote repository
+
+if any collaborator has pushed some files to remote repo,
+	we can pull and infact merge it to our local repo
+
+GitLab	for our official project in cognizant
+
+GitHub
+	personal email id only		NOT cognizant email id
+-------------------------------------------------------------------------------------------------------
+JQuery
+-------
+	if i ask how many of you know javascript. 
+	JQuery is an application of javascript.
+		that means, any js syntax is allowed in the jquery program
+		document.getElementById
+		alert
+		var age=20;
+			all these js code are allowed in jquery
+
+	<script src="file.js">			.js for jquery also
+
+	in html
+		<script>
+		</script>
+	you can have any number of <script> tags in a html file
+		either in <head> or <body> or both
+
+	if <script> tag is in <head> portion
+	and <body> has text boxes,
+		then how can the script access the textboxes as they are not even loaded while script is loaded
+	so we need to check a condition, if document is ready, then only...
+
+Lab setup:
+----------
+	in a computer what i should do to write jquery programs?
+		nothing to install
+	jquery.js 
+		1) create a file jquery.js and paste the CDN code there
+		or
+		2) refer to the cdn directly
+
+	<script src="jquery.js">		means, this file is present in the same folder as html file
+	
+	
+
+<script src="https://code.jquery.com/jquery-3.6.0.js">
+</script>
+
+
+
+when it should happen
+	event
+what should happen
+	event handler
+where 
+	source or destination
+		button
+		textbox
+
+
+
+$()			selector
+			here, we specify the event source
+			the object that cause event
+	
+$(document).ready();	
+			ready is the event
+$(document).ready(function(){});	
+			the function is the event handler
+
+	
+
+
+
+
+	function fn1()
+        {
+            alert("this is fn1");
+        }
+
+        $(document).ready(fn1);
+
+the above is same as
+
+
+        $(document).ready(function(){	alert("this is fn1");		});
+
+	here, the function() is anonymous function that do not have a name
+	this function is useful here only. we cannot call anywhere else
+
+javascript	vs	jquery
+
+innerHTML	=	html()
+innertText	=	text()
+value		=	val()
+
+
+
+1) lab setup
+2) selectors
+		$("p")				p is a paragraph. Here, we are using "Element" selector
+		$("#p1")			p1 is the id of an element. Here we use "ID" selector
+		$(".p2")			p2 is the class of an element. Here we use "class" selector
+
+	there are more selectors like pseudo selectors, expression 
+
+
+
+set up your env
+	1) refer to jquery cdn
+	2) use local jquery.js
+	3) go to https://www.w3schools.com/jquery/
+		go to chapter name "Selectors"
+		identify various methods of using selectors.	Try it yourself
+
+
+
+Spring Rest handson
+	
