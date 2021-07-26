@@ -1,0 +1,43 @@
+jquery
+	selector
+		element
+		id
+		class
+		pseudo selector
+		expression
+	
+events
+	onclick="fn1"
+	$(<<selector>>).click(fn1);			fn1 is already defined above. else, anonymous
+	$(<<selector>>).click(function(){
+		event handler here
+	});
+
+effects
+
+animations
+
+how we can use css here?
+	all of you know css			(stage 1)
+	how to change the background color?
+		<body bgcolor="blue">		this is done in HTML
+		<body style="background-color:blue">			this is done in css
+
+in a signup form
+	when user navigates to various text boxes, highlight the textbox where the user currently is
+
+
+ask yourself some questions
+what	the current text box should be highlighted
+when	the focus is received by the text box		focus event
+where	on the current text box
+how	css method to be used
+
+
+
+
+
+opposite to focus event is "blur"
+
+to make an element visible and invisible
+
