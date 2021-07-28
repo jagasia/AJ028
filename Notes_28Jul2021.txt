@@ -1,0 +1,156 @@
+web application
+
+
+1) Solutions team is ready to give you the 
+	titles
+	backlog
+2) You can also suggest 
+	title
+	backlog		(pb)	Product Backlog
+
+	to the solutions team and trainer and get approval
+
+what are the technologies to be used in our project?
+	HTML
+	CSS
+	Bootstrap
+	Angular
+		ts
+	java POJO	for entity classes			Employee.java mapped to EMPLOYEE table 
+	Dao		jdbc template				spring jdbc template
+	service							EmployeeService		
+	controller	RestController				spring boot
+	backend 	mysql
+	IDE		eclipse/spring tool suite
+
+----------------------------------------
+So far we have learnt,
+Spring Rest
+Git
+JQuery
+
+
+click
+keyup
+keydown
+focus
+blur
+submit				when we click the <input type="submit" />
+
+$(".btn").click(function(){
+	//event handler here
+});
+
+
+
+
+
+------------------------------------
+Bootstrap
+---------
+	what is bootstrap?
+		somebody has created lot of 
+			css
+			jquery
+		code and given us as bootstrap
+
+remember, we created an example
+
+whenever cursor enters a textbox, it is highlighted
+when it leaves the textbox, highlight is removed
+
+we can save that jquery coding in a separate file
+
+
+in 1st stage you learnt css
+------------------------------
+do you know that we can create a css file separately and refer it in a html file?
+
+how can i refer css file in a html file?
+
+
+
+Conclusion:
+	if there are 
+		.css
+		.js
+	files, we can refer them in our html file and get benefit
+
+how to use bootstrap in our html file?
+	like we reference
+		.css
+		.js
+	we do the same way, we reference bootstrap also in our html file
+
+	bootstrap.css
+	bootstrap.js
+	jquery.js
+
+
+scaffholding
+
+in jquery also, in css also
+	#	for ID
+	.	for class
+
+css
+	.btn
+	{
+		color:green;
+	}
+		
+
+<input type="button" class="btn" />
+
+
+
+
+When bootstrap is applied to a html file,
+	it impacts in the appearance of every element
+	this is called as Typography
+
+in bootstrap.css there are lot of styles applied using class
+	.btn
+	.btn-success
+	
+
+red green blue		combination is used for getting any color
+	000		red, green, blue all are zero			BLACK
+	fff		all are highest value				WHITE
+
+	f00		red			
+	0f0		green
+	00f		blue
+	555		grey scale			all red, green, blue are equal means grey scale
+
+
+
+
+do you know the difference between
+	div 	&	span
+
+
+can we place 3 <div> in one line?
+
+
+bootstrap treats a web page as 12 columns
+
+.row
+.col-xx-xx
+	col-md-4
+	col-sm-2
+	
+
+
+
+bootstrap grid
+	12 columns
+	typography
+
+
+Responsive Web Design
+	when user views the website from mobile, laptop, desktop
+	the screen width is different and browsers can be resized
+	the RWD adapts to the width
+	
+	Bootstrap is Mobile-first approach
