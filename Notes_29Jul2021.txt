@@ -1,0 +1,59 @@
+1) scaffholding
+	provides basic structure of the website.
+	logo
+	banners
+	login/logout
+	Menu
+	Components
+	table of contents
+	a cards of products
+
+Let us create a sample website using bootstrap
+	CARDS
+	navbar
+	jumbotron
+	
+
+Lets see what is card?
+	is like a box
+	that contains
+		an image
+		Title
+		description
+		Price
+		Button		"Add to cart"	or	"Buy Now"	or More info
+
+	wherever in the card, i click, the button should be clicked "Stretched Link"
+
+	in bootstrap, just learn what object with which "class" this combination
+
+
+1) in-line			
+2) internal
+3) external
+
+in-line
+	<p style="color:red" >This is a para</p>
+
+internal		(in the same page)
+	<style>
+		p
+		{
+			color:red;
+		}
+	</style>
+
+external		(the css file is referred			.css)
+	<link rel="stylesheet" href="one.css">
+
+if i have all of these in a page??????
+	which one will apply?
+
+	in-line wins		whatever we specify in line that only applies
+
+if inline is not there,
+	internal will apply
+
+if internal is not there,
+	then only external style will apply
+
