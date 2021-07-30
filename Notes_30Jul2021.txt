@@ -1,0 +1,114 @@
+AJ028
+
+creating components
+--------------------
+	what is a component in angular?
+	a component can be plugged into any other components or module
+	a component
+		template			html
+		style				css
+		code				ts
+		unit test			spec.ts		(karma jasmine unit test code)
+
+
+if you see the .ts file
+	class AppComponent
+		that is decorated by @Component decorator is a component
+
+	@Component		is called as annotation in java. but "decorator" in typescript
+
+in today's demo:
+-----------------
+1) create a project "july30"
+	with routing
+	style=css
+2) a login component
+3) plug it in app component
+4) if username and password are 
+	root
+	rootuser
+		
+		then login is successful, else failure
+5) use bootstrap for scaffolding
+
+
+To create a component:
+	ng g c login					here, login is the component name
+							g for generate, c for component
+	ng generate component login
+	ng g component login
+
+		login.component.html
+		login.component.css
+		login.component.ts
+		login.component.spec.ts				we dont use this	karma jasmine unit testing
+ 
+
+SPA
+	Single Page Application
+		index.html
+
+all the components are plugged in index.html
+	i suggest only you plug app component in the index.html file
+
+all other components can be plugged inside app component
+
+
+every component is a piece of code that do not contain root element "html" or "head" or "body"
+they contain only the portion of code that can be plugged into the app component or index.html
+
+only index.html has the root elements
+
+
+You learnt to create a component
+plug it in app component
+
+---------------------------------------------------------------------------------------------
+Binding
+-------
+property binding
+		[]			one way binding		data in .ts is bound to the property of an element
+event binding
+		()
+two way data binding
+		[()]		banana in the box binding
+
+	
+Property binding:
+	in typescript we declare a variable with a value
+		x:string='hello world';
+	in html
+		{{x}}		this will print the value of x
+	this is called as interpolation
+
+
+
+    User Name: <input type="text" name="" id="" class="form-control" [value]="x">
+		here, value is the property of text box which is bound to a variable in ts called "x"
+	x is not a value, but variable declared in ts
+	hence [] are used  to treat x as a variable
+
+	Property binding is one way. The value of ts variable is used in the property of html element.
+	But vice versa is not possible. a change in property will not change the ts variable at all
+
+That is when you need 2 way data binding
+Two way data binding:
+	in order to do 2 way binding,
+	1) import "FormsModule" in app.module.ts
+	2) [()]
+	3) the "name" property of the html element must be set for 2 way binding
+
+Event binding
+	binding a function to an event
+
+Anil
+Dinesh K
+Katakam Sriharshini
+Likhitha
+Nikitha
+Priyanka
+Arun
+Rithesh
+Sirisha
+Sri Chakradhar
+Ruchita V
