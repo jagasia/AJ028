@@ -1,0 +1,228 @@
+lets create an angular project
+	forms-demo
+TypeScript  & its features,  JavaScript  vs TypeScript, Introduction  to forms in Angular, Reactive  forms, Template-driven  forms, Form Model  Setup, Form model setup in Reactive forms, Form model setup in Template-driven,  Pass data from parent  to child with input binding,  Pass Data from URL,  Pass Data through  @Input  and @Output,  Pass Data Through  a Service Using Observables
+
+Typescript vs Javascript
+--------------------------
+	Javascript programs are not compiled. They are interpreted. Hence, we are not able to find syntax errors or logical errors.
+	Only when we run javascript programs, we can find errors. 
+	To run javascript programs, we may have to run html code. (if somebody else is writing html code, then we are not able to work independently)
+	
+	Typescript programs are compiled. so we find errors without running the code
+	tsc one.ts			is compilation. 	it produces 	one.js	
+	
+	Typescript has datatypes. 	Javascript has only one type "var"	it means anything is allowed
+	Typescript supports multi type variables
+		let age:string|number;			two types are allowed
+
+	language, editor support (vs code can help in coding typescript)
+	Object oriented			classes, inheritance, interfaces, overriding
+
+	class Student
+	{
+	}
+		this is typescript syntax of creating a class. 
+
+
+What are forms?
+-----------------
+	FORMS are mostly for getting inputs from the user. Sometimes output also.
+	<form>
+	</form>
+		this is a form in html
+
+	Now, what do we learn about forms in angular?
+
+	we learn to bind the input elements to typescript variable.
+	For ex:
+		there is a textbox inside the form.	How to read the value of textbox?
+		document.getElementById("txt1").value;		//javascript
+
+	we are not going to use this technique in angular
+
+1) property binding
+	the value of a variable declared in typescript class is bound to an input element in html form
+
+	ex:
+		User Name:...............
+		Password:................
+		Submit Reset
+
+
+	<input type="text" name="" id="" class="form-control" [value]="uid">
+		here, value="uid" means uid is printed.	But [value]="uid" means, uid is a variable not value. 
+		the value of variable is printed
+
+	property binding is done using []
+
+2) event binding
+	event binding is done using ()
+	
+	a function in typescript is bound to an event in html element
+	<input type="button" value="Login" class="btn btn-success" (click)="fn1()">
+		here, fn1() is a function defined in .ts file
+
+	events can be 
+		keyup		
+		blur			lost focus		cursor moves away from an element
+		focus			got focus		cursor comes into an element
+		click
+		submit		
+			and so on
+
+
+3) interpolation
+	{{uid}}
+			{{}} this is interpolation.	Interpolation is only for display purpose. Read only
+			it will display the value of a variable or object
+			it will not affect the variable
+
+A property binding is one way.		the value of (ts) variable is accessed by a property of (html) element
+			but not vice versa
+			a change in property (value) of textbox did not affect the (ts) variable
+
+4) two way data binding
+	the ts variable is bound to property of html element. And when the html element property value is changed, it should reflect in the (ts) variable
+	to achieve this
+		[()]		banana in the box	is used for two way data binding
+
+	1) REMEMBER	"name" property of the html element is compulsory when we do 2 way data binding. name can be anything
+	2) we need to import "FormsModule" in app.module.ts in order to achieve two way data binding
+		only them		[(ngModel)] can be used
+	
+NOW YOU HAVE LEARNED 
+	1) property binding
+	2) event binding
+	3) interpolation
+	4) two way data binding
+
+All these techniques are used in "Template Driven Forms"
+
+what is a template
+	HTML code is called as template
+
+login.component.html
+----------------------
+<form class="container-fluid">
+    <!-- User Name: <input type="text" name="" id="" class="form-control" [value]="uid"> -->
+    User Name: <input type="text" name="x" id="" class="form-control" [(ngModel)]="uid">
+    Password: <input type="password" name="y" id="" class="form-control" [(ngModel)]="pwd"><br>
+    <input type="button" value="Login" class="btn btn-success" (click)="fn1()">
+    &nbsp;<input type="reset" value="Reset" class="btn btn-warning">
+</form>
+<div>{{message}}</div>
+<br>
+{{uid}}
+
+login.component.ts
+--------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+//   template:`<form class="container-fluid">
+//   <!-- User Name: <input type="text" name="" id="" class="form-control" [value]="uid"> -->
+//   User Name: <input type="text" name="x" id="" class="form-control" [(ngModel)]="uid">
+//   Password: <input type="password" name="y" id="" class="form-control" [(ngModel)]="pwd"><br>
+//   <input type="button" value="Login" class="btn btn-success" (click)="fn1()">
+//   &nbsp;<input type="reset" value="Reset" class="btn btn-warning">
+// </form>`,
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+  uid:string='rama';
+  pwd:string='';
+  message:string='';
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  fn1()
+  {
+    alert(this.uid+" : "+this.pwd)
+    if(this.uid==this.pwd)
+    {
+      this.message='Login Failed';   
+    }
+    else{
+      this.message='Login is successful';
+    }
+  }
+}
+
+---------------
+-------------------------------------------------------------------------
+Reactive Forms
+--------------
+In order to use reactive forms,
+	we have to import something in app.module.ts
+		ReactiveFormsModule
+
+
+in reactive forms,
+	we start from .ts file
+	we create an object representation of the entire form
+		
+
+Employee form
+	employee object should be sent to REST controller
+		addEmployee(Employee employee)
+	so we send employee object? ie., the entire FORM is sent as an object to java method
+
+	when we receive an employee object from Rest controller, we can patch that object into form in 1 line code
+
+
+to create reactive forms, we need to inject "FormBuilder" into the constructor of .ts file
+
+signup.component.ts
+-------------------
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
+})
+export class SignupComponent implements OnInit {
+  signupForm:any;
+
+  constructor(private fb:FormBuilder) { 
+    this.signupForm=this.fb.group({
+      username:[],
+      password:[],
+      cpassword:[],
+      firstName:[],
+      lastName:[],
+      phone:[],
+      email:[]
+    });
+  }
+
+  ngOnInit(): void {
+  }
+  fn1()
+  {
+    console.log(this.signupForm.value);
+  }
+}
+
+
+
+signup.component.html
+-----------------------
+<form [formGroup]="signupForm" class="container-fluid">
+    User Name: <input type="text" name="" id="" class="form-control" formControlName="username">
+    Password: <input type="password" name="" id="" class="form-control" formControlName="password">
+    Confirm Password: <input type="password" name="" id="" class="form-control" formControlName="cpassword">
+    First Name: <input type="text" name="" id="" class="form-control" formControlName="firstName">
+    Last Name: <input type="text" name="" id="" class="form-control" formControlName="lastName">
+    Phone: <input type="number" name="" id="" class="form-control" formControlName="phone">
+    Email: <input type="email" name="" id="" class="form-control" formControlName="email">
+    <br>
+    <input type="button" value="Sign Up" class="btn btn-success" (click)="fn1()">&nbsp;
+    <input type="reset" value="Reset" class="btn btn-warning">
+</form>
+<br>
+{{signupForm.value | json}}
