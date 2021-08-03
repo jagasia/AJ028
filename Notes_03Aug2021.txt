@@ -1,0 +1,104 @@
+We have learnt to create components in angular
+we learnt to create paths in router-module
+and router link to provide navigation to any path
+and display the component in the router outlet
+
+Angular + Spring integration
+
+Spring REST API can be accessed from angular project
+	using 	HttpClient
+
+first,
+	there are rest apis available in internet.
+	Lets access them from angular
+later,
+	we create our rest api and access them from angular
+
+
+
+class Employee
+{
+	Address address;
+}
+
+class Address
+{
+	int dno;
+	String buildingName;
+	String street;
+	String city;
+}
+
+---------------------
+Lets take airline rest api for example
+	https://api.instantwebtools.net/v1/airlines		(GET)	returns all airlines
+	https://api.instantwebtools.net/v1/airlines/8		(GET)	returns one airlline by id
+	https://api.instantwebtools.net/v1/airlines/8		(POST)	adds an airline
+
+Steps to access a rest api from angular:
+------------------------------------------
+1) import "HttpClientModule" in app.module.ts
+2) create a service "airline"
+	inject http client into the constructor				constructor(private http:HttpClient)
+3) we can access url by using http client object
+	http.get
+	http.post
+	http.put		in airlines it is not supported
+	http.delete		--do--
+
+4) create methods for each operations		like get and post
+
+5) create a component "airline"
+	plug it in app component
+6) in airline component
+	create a reactive form and display all airline data in table format below the form
+	every row to have "select" button to patch the value in the form. so that it can be edited (airline dont)
+
+
+
+CORS policy
+	Cross Origin Resource Sharing
+
+	from localhost:4200 we are trying to access REST API running in localhost:8080
+	this is normally prevented by CORS policy
+
+	to allow, we need to add the below in the rest controller
+	@CrossOrigin(origins={"http://localhost:4200","*"})
+
+-------------------------------------
+1) Login
+2) Signup
+
+	for both of these components, we need one rest controller
+
+	we can create several rest controllers in separate projects and register them in eureka server as microservices
+
+
+
+CREATE TABLE USER_MASTER
+(
+	username varchar(50) primary key,
+    password varchar(20) not null,
+    firstName varchar(20),
+    lastName varchar(20),
+    email varchar(50),
+    phone varchar(15)
+);
+
+1) create a class User in java	entity class	model package or entity package
+2) UserDaoImpl
+	UserDao Interface
+3) UserService
+	autowire the dao here
+4) UserController
+	map url to the methods
+
+------------------
+
+we have created spring rest api for user module
+	
+now in angular
+	user.service.ts
+		access rest api using http client
+	user.component.ts
+		inject user service and access the service
