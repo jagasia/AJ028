@@ -1,0 +1,93 @@
+Sending email from java program
+
+1) gmail account		for FROM ADDRESS
+2) settings
+	manage account
+		allow less secure app access		ON
+3) 
+private void sendEmail(String to, String otp)
+	{
+		 Properties props = new Properties();
+	        props.put("mail.smtp.host", "true");
+	        props.put("mail.smtp.starttls.enable", "true");
+	        props.put("mail.smtp.host", "smtp.gmail.com");
+	        props.put("mail.smtp.port", "587");
+	        props.put("mail.smtp.auth", "true");
+	        //Establishing a session with required user details
+	        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication("jag.javaprogram@gmail.com", "");
+	            }
+	        });
+	        try {
+	            //Creating a Message object to set the email content
+	            MimeMessage msg = new MimeMessage(session);
+	            //Storing the comma seperated values to email addresses
+//	            String to = "rjagadeeswaran@yahoo.com";
+	            /*Parsing the String with defualt delimiter as a comma by marking the boolean as true and storing the email
+	            addresses in an array of InternetAddress objects*/
+	            InternetAddress[] address = InternetAddress.parse(to, true);
+	            //Setting the recepients from the address variable
+	            msg.setRecipients(Message.RecipientType.TO, address);
+	            String timeStamp = new SimpleDateFormat("yyyymmdd_hh-mm-ss").format(new Date());
+	            msg.setSubject("Sample Mail : " + timeStamp);
+	            msg.setSentDate(new Date());
+	            msg.setText(otp+" is the One time password to signup in our website. Do not share this with any one.");
+	            msg.setHeader("XPriority", "1");
+	           
+	            Transport.send(msg);
+	            System.out.println("Mail has been sent successfully");
+	        } catch (MessagingException mex) {
+	            System.out.println("Unable to send an email:\n" + mex);
+	        }
+	}
+
+-----------------
+i send otp as email
+also this controller returns the otp back to angular
+angular will store this otp in localStorage
+and user enters otp
+	that is compared with localStorage otp
+if they are equal
+	enable the submit button	else disable the button
+
+-----------------------------
+every rest api
+	can be registered as micro service
+why we call it as microservice?
+	we are sharing only a micro level of code as a service
+
+in rest
+	every method has an url
+	so only that method is allowed to be accessed
+
+if you see 
+	BookMyShow app
+		we pay using our credit card /debit card/ gpay/ or internet banking
+
+how bookmyshow app is able to access some other enterprise (bank) programs?
+	that means banks/ other enterprises allow the app to access certain code of their large application
+
+they are not sharing entire project with book my show
+	mono lithic means entire project is done as a single layer
+	that is not favor of enterprise application integration
+	EAI	we need to split the project into multiple layers so that any 1 layer can be shared
+	also any 1 layer affected may not affect other layers
+
+	i am not able to pay using debit card, i can use credit card or i can choose gpay 
+one service is down, may not stop the business
+this gives interest to create our application as multiple independent services
+
+practically what we are going to do?
+	Eureka server and client 
+	Feign client
+
+	These are the 2 techniques we are going to learn in microservices
+
+every rest api will be registered in eureka server
+	and we can monitor the services running and find the load, using a control panel
+
+
+
+you already have received the pb from the solutions team
+	just sending it back is what i told
