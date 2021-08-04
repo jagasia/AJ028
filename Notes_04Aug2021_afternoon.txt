@@ -1,0 +1,144 @@
+Angular
+	Pipes
+		are used to transform any data into another form
+
+ex:
+	var obj;				//value is Student object
+
+	{{ obj }}				it is displayed as [object object]
+	{{ obj | json }}			it is displayed as json string 	{"studentId":"1"}
+
+lot of pipes:
+	uppercase
+	lowercase
+	titlecase				we used it yesterday
+	
+		these are character pipes
+
+	there are number pipes, date pipes also
+	currency pipes
+
+
+	number pipes are used to display using comma separator, decimal points. like 2 digits precision
+
+usually the dates are printed in very long ISO format
+
+
+How to create a custom pipe?
+	a class that is decorated by @Pipe decorator and implements an interface called "PipeTransform" 
+	and override the method "transform"
+		is called as custom pipe
+
+@Pipe({
+  name: 'len'
+})
+
+
+and declare this pipe in "declarations" section of app.module.ts
+
+or
+	ng g p <<pipe name>>
+
+
+in typescript
+	...		is ellipsis symbol used to create "REST" parameters 	means param array
+
+-----------------------------------------------
+Validations
+	are checkpoints for data entry mistakes done by the user. in that case, we should not enable the submit button
+
+
+
+first
+	create PB
+	abstract
+	wire frame			contains page designs		UI		HOME PAGE ....
+
+sprint 1:		5 days		basic crud operations
+sprint 2:		5 days		validation, navigation, integration and testing
+
+
+What is microservice:
+-----------------------
+1) Register spring rest api in Eureka server as client
+2) Feign client
+
+Eureka
+_______
+we creat an application that runs in a specific port
+
+in sprint boot application, we can specify the port number on which our application should run
+	in application.properties
+		server.port=8761				
+
+eureka serve is nothing but a spring boot application that runs in port 8761
+	and also enable eureka server using annotations
+
+1) create a spring boot application using spring initializr web service
+2) add the following dependencies
+	Eureka Server
+3) in Application file, under @SpringBootApplication annotation
+	add @EnableEurekaServer annotation
+4) go to application.properties
+	
+	eureka.client.registerWithEureka = false
+	eureka.client.fetchRegistry = false
+	server.port = 8761
+5) run the project as spring boot app / java application
+6) open browser and navigate to http://localhost:8761/
+---------------------------------------
+Create a rest api
+-----------------
+add the necessary dependencies 
+and also Eureka discovery client
+	go to application.properties
+		
+		#register this REST API as microservice in eureka server
+		server.port=8383
+		spring.application.name=employee-service
+		eureka.instance.hostname=localhost
+		eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:8761/eureka/
+		server.context-path=/employee
+
+---------------------------------------
+Feign Client
+------------
+REST API
+	GET
+	POST
+	PUT
+	DELETE
+
+Suppose, if we are not using Angular Front end in projects,
+	then we will be using either HTML / JSP front end.
+	<FORM METHOD="POST" action="">
+	</FORM>
+
+GET and POST can be done using <form> tag.
+
+But when it comes to PUT and DELETE, there is an inconvenience
+
+this is where, we need a technique to access REST API from MVC project	(MVC means, view also present)
+
+in rest api, MODEL and CONTROLLER are only present.
+if VIEW is also present, then it is MVC project		(navigations will be there)
+
+CONCLUSION:
+	we need to access REST API From a MVC project. Then use Feign Client.
+
+	Feign client transforms a rest api into an interface containing methods.
+	so we can call the methods rather than calling URLs
+
+---------------------------
+in this demo, we have a rest api running as
+	GET 	http://localhost:8383/employee
+	GET 	http://localhost:8383/employee/101
+	POST	http://localhost:8383/employee
+	PUT	http://localhost:8383/employee
+	DELETE	http://localhost:8383/employee/101
+
+we create another project
+	hrms-mvc
+which is a MVC project that access the above REST api using Feign client
+1) 
+	
