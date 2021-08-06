@@ -1,0 +1,150 @@
+Yesterday, we deployed a spring boot application in aws
+
+1)	deploying a sample application (that is already provided by aws)
+2)	deploying our application in aws
+3)	deploying our application with mysql backend
+-----------------------
+Today we are going to deploy "user-demo" application in aws
+This app is a spring boot rest api
+Changes done:
+	server.port=5000
+	@CrossOrigin		...remove all localhost		*		is ok
+
+In AWS
+1) create an application	(java environment)
+2) first let it be sample application
+	this will allow creation of environment.
+	once env is created, we can configure mysql database
+	then we access the mysql database from "mysql workbench" and create necessary table(s) add record if required
+3) the created mysql db configuration details are updated in our application.properties
+	spring.datasource.url=jdbc:mysql://localhost:3306/aj028
+		i will replace "localhost" by the aws mysql endpoint	 that is recently configured
+	MySql service in AWS is also called as RDS	(Relational Database Service)
+	aurora 
+4) now after updating our application properties, we generate jar file and deploy it in aws
+	right click project -> Run as -> Maven build	-> Goals: clean install
+
+
+
+steps for mysql configuration in aws:
+1) go to env
+2) configuration in left side
+3) in configuration scroll down to last one ie., database
+3) choose "mysql", version 8.0.23, username and password	(NOTE DOWN the username and password)
+	APPLY. it will take time
+
+in the aws application env we created, 
+localhost -> (endpoint) -> 
+	database-1.cljtedwklhul.ap-south-1.rds.amazonaws.com	
+
+3306
+
+root
+rootuser
+
+Have you all installed docker in your computer?
+--------------------------------------------------------------------------------------------
+Have you ever experienced like, an application created in one computer, that runs fine there, but face problems while running in another computer?
+
+what might be the reason?
+	ans: change in environment
+
+we, developers develop the project in source computer.
+after development, we deploy the project in destination computer.
+
+because of the difference in configuration, there are lot of problems.
+
+Suppose, if i tell you one technique, 
+	that allows you to run your project in a computer where, even java is not installed
+
+YES
+	to run a program, all that are required are provided by "Container"
+	so if we just have a container, then we can run a program in that computer
+
+Dockers are used to run any project under a container in any computer
+
+There were similar but different technique
+	In a windows computer, a linux Virutal PC can be used	(virtualization)
+
+How virtual PC is different from Docker
+	Virtual PC is simply an OS that is provided in another OS
+	so it is heavy. Entire OS, its desktop, etc are loaded in memory which is heavy weight
+
+But Docker is light weight.
+	Only the required, OS features, supporting files, or programs, libraries, memory are used to run a program
+
+Container is light weight. Virtual PC is heavy weight.
+
+Dockers are preferred.
+
+if i have an image of a project.
+i can run that image in any computer that has docker installed.
+
+you can run that project in your computer effortlessly. 
+I AM GIVING YOU IMAGE OF A SPRING BOOT APPLICATION
+
+Image		
+	image of a project that can be deployed in docker hub portal
+Container	
+	when we run an image, it becomes container
+
+
+Docker
+_______
+
+
+docker images
+	this command lists all the local images
+docker image ls
+	this is also same command as "docker images"
+docker rm containername
+	this command removes a container
+docker rmi imagename
+	this command removes an image
+docker container ls
+	this command lists all the containers running
+docker ps
+	this is also same command as "docker container ls"
+docker stop containerid
+	this command stops running container by given id
+docker kill containerid
+	this will kill the container
+docker stop -f containerid
+	this will forcibly stop the container
+docker run 
+	is used to run an image. If image is not found locally, it will be copied to local repository and run
+		docker run -p 8080:8080 jagindia/mymvc
+	here, the image name is mymvc. jagindia is the docker hub account name
+---------------------
+We are going to create dockewr image of our own project now.
+
+in our project folder, 
+	in the same location where pom.xml is also present, 
+	we create a file
+		Dockerfile
+	the spelling should be exactly as mentioned above
+	we specify the information required to create image
+
+FROM java:8
+EXPOSE 8080
+ADD target/aj028-demo-1-0.0.1-SNAPSHOT.jar aj028-demo-1-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar", "aj028-demo-1-0.0.1-SNAPSHOT.jar"]
+
+
+1) create image of the Docker
+	docker build -t aj028-demo-1 .			(remember the dot at the end)
+2) tag the image to docker hub application		(we have to create an application in docker hub portal)
+	docker tag aj028-demo-1 jagindia/aj028
+3) push the image to docker hub
+	docker push jagindia/aj028
+
+
+
+docker run -p 8080:5000 jagindia/aj028
+
+running an existing docker image
+deploying an application in docker as image
+
+run our application and mysql both together
+	docker-compose.yml
+
