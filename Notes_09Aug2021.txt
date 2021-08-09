@@ -1,0 +1,57 @@
+1) as POD leader, you have to create a project in TekStac portal
+	Stage3
+	Project
+		in this section
+			i) document repository
+			ii) code repository
+
+in document repository
+	upload documents
+		Product Backlog	(this contains user stories)
+		Abstract
+		HLD
+		Wireframes
+
+code repository
+	project start date 16-Aug-2021
+
+
+Milestone 1:
+		Sprint 1
+			16-Aug-2021	-	20-Aug-2021
+	
+milestone contains "issues"
+
+what we are going to do in sprint1
+	basic functionalities in each user story should be completed
+		if i enter correct input, then the data is stored / updated/ delete
+validation, navigation, exception handling
+		if i enter wrong input that cause, error, it is handled
+
+in data entry form, you enter all details but BEFORE YOU SUBMIT,
+	stop tomcat server in eclipse. Back end is not available, what happens?
+	if you display comprehensive message that server is not available, then you are pass
+
+
+--------------------------------------------------------
+Splunk
+	what is splunk?
+		is a tool that is used to read machine data, analyse, report, forward etc
+
+	what is machine data?
+		log entries created by programs. 
+	
+	Day by day, the log entries are accumulated in large volume. These information if properly analysed, we can get very important information. Especially, if we present the information in graph charts or trends.
+
+	Log info is little complicated format for human being. Even for machine. 
+	Splunk makes it easy to understand
+
+1) download splunk from:
+	https://www.splunk.com/en_us/download.html
+2) choose "Free Splunk" from top right and signup and download
+	https://www.splunk.com/en_us/download/splunk-enterprise.html?skip_request_page=1
+
+3) execute the installer
+	create account (same or different) for administrator user
+
+
