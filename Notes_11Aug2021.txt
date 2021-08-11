@@ -1,0 +1,136 @@
+Project title:	Attendance Marking
+
+Entities:
+	User
+
+what is meant by registration?
+	there is a table called USER_MASTER		(USER is a keyword in most of databases)
+		We are adding a new row into that table	(this is called as registration)
+
+
+	MASTER TABLES HAVE PRIMARY KEY. 		USUALLY DO NOT HAVE FOREIGN KEY
+	They are indepdendant tables.	
+
+	DETAILS TABLES HAVE FOREIGN KEY.		USUALLHY THEY ARE TRANSACTIONS
+	Ex:
+		SALES		PURCHASE
+
+1) Registration		(adding a row in USER_MASTER)
+2) Authentication	(SELECT query on USER_MASTER)	
+			SELECT * FROM USER_MASTER WHERE employee_id=? AND password=?
+				if we get 1 row, then login is successful.
+				if we get 0 row, then login is failure
+
+
+User and Admin both have 
+	firstName
+	lastName
+	age
+	gender
+	contactNumber
+	password
+	role		(user/admin)
+
+except
+		Users have userId
+		Admins have adminId
+
+so why not we keep same table for BOTH user and admin
+
+	let it be userId only for USER table
+
+	add one more field to determine whether it is USER/ ADMIN
+
+	role
+
+
+SELECT * FROM USER WHERE employeeId=? AND password=?
+	what we get is 0-1 row
+	that row will contain role column, using that column, we can understand whether he is user or role
+
+
+how we decide whether we need only user table or admin table or both
+
+when there is only 1 admin in our project, we dont need a separate table for admin
+but here, admins also signup (register)
+
+now it is ideal to have 2 tables. 	1 for user 1 for admin
+	But both user and admin have same fields
+
+User and Admin both have 
+	firstName
+	lastName
+	age
+	gender
+	contactNumber
+	password
+
+
+so it is redundant to create 2 tables.
+also, then we need to provide 2 login pages? 
+	so it is not good idea to create 2 tables.
+
+1 table
+1 login form.
+	Based on the user name and password they enter, we can find their role
+
+-----------------------------------------------------------------------
+for user module:
+
+If class name is 
+	RegularEmployee
+then table name should be
+	REGULAR_EMPLOYEE			Because, in database, usually everything is in upper case. 
+
+If java class variable name is 
+	firstName
+then column name should be
+	FIRST_NAME
+
+User
+USER
+
+UNLESS SPECIFIED,
+	EACH TABLE HAVE A PRIMARY KEY COLUMN AS "ID:
+
+product
+	id
+
+sales table
+	product_id				foreign key should be like <<tablename>>_<<columnname>>
+
+id is common for user and admin
+
+every table having primary key named as "id"
+
+
+1) TABLE		first step in your coding process
+	firstName
+	lastName.....			as per user story		if required, add additional fields also
+
+2) Entity class in java
+	User.java			in a package 		"entity"
+
+3) UserDaoImpl..java			java class
+		autowire the JdbcTemplate
+	create, read, read (id), update, delete			mthods. if required, additional methods
+4) UserDao.java			interface			extract this from impl 
+
+5) User Service			autowire the Dao interface here
+6) UserController.java		@RestController			auto wire the service here
+		GET, POST, PUT, DELETE mappings here
+
+
+	end of back end....................................
+
+in angular
+1) create service that access the REST API
+	use HTTP CLIENT
+
+2) UI forms
+	create separate components
+		ex:		for user controller in java, 	
+					we create 	login component, signup component 
+			in this case it is not User Component, it is login + sign components
+
+========================================end of team 1=====================================
