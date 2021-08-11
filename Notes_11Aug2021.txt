@@ -134,3 +134,89 @@ in angular
 			in this case it is not User Component, it is login + sign components
 
 ========================================end of team 1=====================================
+Project title:
+	E-Learning Management
+
+USER
+	id		auto-generate	
+	name
+	dob
+	contactNumber
+	password
+	address
+
+
+what is a registration?
+	adding a row into the USER table is called regn
+
+Your registration is successful. Kindly note the id
+
+
+While logging in, the users have option to choose
+	user/admin		
+
+
+i suggest you to have a separate table for admin
+because, there is only 1 admin in your project
+
+now based on what he chose while logging in, we can check in admin table or user table
+
+
+-----------
+Lets discuss the naming conventions
+
+in java, class name is User
+in db, table name should be USER
+
+IN JAVA, field is (variable is) firstName (for example)
+in db, column name should be FIRST_NAME
+
+bcos in db, usually everything is in UPPER CASE
+
+firstName	=	FIRST_NAME
+
+lastName	=	LAST_NAME
+
+JPA repository f/w follows this convention:
+
+we are not using jpa, we are jdbc but convention should be forward thinking
+
+all primary keys can be named as ID
+
+so that foreign keys will become <<TABLENAME_ID>>
+
+user table has ID column	is primary key
+sales table has USER_ID		is foreign key
+
+COURSE table has ID as primary key
+SALES TABLE	COURSE_ID	means foreign key
+
+1) create tables in the database
+	ex:	USER	is a table
+2) create entity classes in the java
+	ex:	User.java	(in entity package)
+3) create dao impl classes 
+	ex:	UserDaoImpl.java	autowire the JdbcTemplate here
+4) extract dao interfaces
+	ex:	UserDao.java		interface
+5) create service classes
+	ex: 	UserService.java	autowire the dao interface here
+6) create the controller classes
+	ex:	UserController.java	autowire the service here
+
+--------------------------------------------------
+IN FRONT END
+1) angular
+	create components for controllers
+	not necessarily 1 component per 1 controller
+	ex:
+		user controller will be used by 2 components.		1) signup component	2) login component
+
+1 member in each team can parallely, work on angular also. It is okay no problem
+
+
+spending time of validation, user friendliness, navigation
+	that should be focused on second sprint only
+
+in 1st sprint	focus on creating individual component	like LOGIN, SIGNUP, SKILL
+	plug each component in app component, test it one by one and move to next component
