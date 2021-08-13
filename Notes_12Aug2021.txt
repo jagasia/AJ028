@@ -1,0 +1,27 @@
+create a database in mysql 
+use proper name for database. It can be short but meaningful
+
+1) create tables in the mysql database
+
+
+we are using JDBC		not JPA	(jpa means it will create tables, columns)
+
+in jdbc
+	we only write queries.		so we need to follow convention
+
+firstName	this is fine in java.		but FIRST_NAME	this is fine in sql
+
+firstName		firstName		in mysql		both exactly matches 
+
+
+RECORD THE SCRIPT OF THE TABLE in a file
+
+script file that contains all the 
+CREATE TABLE 
+if required
+	ALTER TABLE
+
+FOREIGN KEY CONSTRAINTS
+	
+
+

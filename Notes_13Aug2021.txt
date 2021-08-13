@@ -1,0 +1,93 @@
+First activity in portal
+	POD leader creates a project in tekstac
+	in gtekstac you have option to go to GitLab
+
+	project name in portal. Name convention?
+	AttendanceMarking_INTADM21AJ028_POD1
+	ELearningManagement_INTADM21AJ028_POD2
+
+
+do not go to gitlab.com and signup or login.....THAT IS NOT CORRECT METHOD
+
+Project is secret. This project should not be uploaded in GITHUB	
+
+project is uploaded only in gitlab
+
+in GITHUB you do not login as cognizant user (cognizant email)
+	in github whatever we do is unofficial, use only personal email in GITHUB
+
+forget git hub
+
+
+From tekstac, we should login to gitlab	CORRECT
+
+IN GIT LAB
+	i am going to create the Milestone	(sprint1, sprint2)		each is for 5 days
+	MONDAY - FRIDAY 	is one sprint		
+
+	Our sprint1 starts on monday 16-Aug-2021. So today, we are supposed to create the project in portal and push empty project in gitlab.
+
+in git lab,
+	username	is cognizant	email id		WITHOUT @cognizant.com
+	password is always		Tekno@1234
+
+
+
+
+
+CREATE DATABASE ATTENDANCEMARKING;
+USE ATTENDANCEMARKING;
+
+
+user_name	varchar(225)	NO	PRI		
+first_name	varchar(225)	YES			
+last_name	varchar(225)	YES			
+password	varchar(225)	YES			
+email_id	varchar(225)	YES			
+role	varchar(255)	YES			
+
+
+in spring tool suite
+	create a spring boot starter project using spring initializer
+
+follow the convention for
+	group id
+	artifact id
+	package name
+
+each project is a microservice	so 	"user-service"
+
+
+
+in sprint1, FOCUS ON BASIC FUNCTIONALITY OF THE PROJECT
+	EACH INDIVIDUAL COMPONENTS TO BE CREATED
+	if user enters data correctly, it is submitted
+
+in sprint2, FOCUS on 
+	VALIDATION
+	NAVIGATION
+	TESTING
+	PWD ENCRYPTION
+	OTP VALIDATION
+
+
+
+
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M jag
+git remote add origin https://github.com/jagasia/ams.git
+git push -u origin jag
+
+
+
+
+
+angular project contains "node_modules" folder which is around 50k files. WE dont want push this to remote repo
+so what to do?
+	NO NEED TO WORRY
+	Whenever we create angular project, it automatically, adds .gitignore file that contains what to ignore.
+so just push from local repo to remote repo
+
