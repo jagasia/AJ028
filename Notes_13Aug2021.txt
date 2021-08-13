@@ -91,3 +91,89 @@ so what to do?
 	Whenever we create angular project, it automatically, adds .gitignore file that contains what to ignore.
 so just push from local repo to remote repo
 
+
+how to push angular project into that repository
+	if you try, you will get error.
+
+
+https://github.com/jagasia/ams
+
+the POD leader push a empty project
+
+whenever each member try to push their code, 
+	problem occurs, if any other members have pushed some code which is not present in your local system
+
+1) empty project
+2) piyush push some files
+3) arun want to push some files.	Problem is?
+	Arun do not have the files pushed by piyush.
+	So what error he will get
+
+	what error Arun gets?
+		Remote repository contains work that you do not have locally
+		git pull before push
+
+	git pull
+		this is also a command to pull 
+		but when there are many branches,
+	git pull https://github.com/jagasia/ams.git piyush
+
+
+what is the difference between:
+	git clone
+	git pull
+
+
+git clone downloads the entire repository. 	If repository is 10 MB, you are downloading 10 MB
+git pull pulls only the incremental change found in the remote to reflect it in the local repository
+	it will not download all the 10 MB	only the changes are downloaded
+
+
+git clone https://github.com/jagasia/ams.git
+
+first time only we clone
+
+next time onwards
+git remote add origin https://github.com/jagasia/ams.git
+git pull
+or
+	git pull https://github.com/jagasia/ams.git piyush
+
+
+
+git merge jag --allow-unrelated-histories
+
+
+
+
+git init
+git add .
+git commit -m "second commit"
+git branch -M jag
+git remote add origin git https://github.com/jagasia/ams.git
+git push -u origin jag
+
+
+
+
+if problem
+
+del .git				y/n 		means 	y		(windows)
+rmdir .git			
+
+
+
+Milestone
+	sprint1
+
+in each milestone
+	we create "issues"		means tasks
+
+	issue
+		allocated to "piyush"
+	
+
+
+sprint 1
+	issue1		user module		allocated to Piyush
+
