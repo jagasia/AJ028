@@ -1,0 +1,587 @@
+Stage 1, 2, 3, Project
+HTML5
+CSS3
+Javascript ES6
+RDBMS
+MySql
+Core Java
+JDBC
+Maven
+Spring core
+Junit
+mockito
+Code Quality
+Servlets and JSP
+Spring MVC using Spring Boot
+Spring REST with Spring Boot
+GIT
+JQuery
+Bootstrap
+Angular
+Microservices
+Spring Cloud
+Splunk
+------------------------------------------------
+We did not learn
+	Hibernate			in MVC, for validations, we used Hibernate Validator
+	Spring data JPA
+	
+
+
+
+@Entity	 	//this is hibernate / jpa repository
+public class Employee
+{
+	@Id	//this is hibernate /  jpa repository
+	private Long id;
+	@Size(min="10",max="50")		//hibernate validator
+	private String name;
+}
+
+--------------------------------
+HTML5
+	what are the new elements introduced in HTML version 5?
+		i) semantic elements
+		ii) form elements
+
+	semantic elements:
+		before html5, html v4 had
+			<div class="header">
+			</div>
+		but in html5,
+			<header>
+			</header>	
+
+			<footer>
+			</footer>
+
+	so in css,
+		.header{}
+		header{}
+
+
+	form elements:
+		<input type="text" />		//old
+
+		<input type="number" />
+		<input type="email" />
+		<input type="date" />
+		<input type="range" />
+
+
+what is the difference between
+	<div> and <span>
+
+Tell me some container elements in html
+	p
+	div
+	span
+	li
+
+they allow child elements to be present inside
+
+ex for empty tag?
+	<br>
+	
+ex for entities?
+	Why entities are introduced, because, we cannot use some symbols in html
+
+	>		<		these symbols cannot be used
+
+	&gt;		&lt;
+
+	&nbsp;		is space
+
+	These are all entities
+
+what is namespace?
+	it is like a package in java. That groups programs so that they can be imported in other programs
+
+	xmlns:abc=""
+
+	<!--		-->
+
+--------------------------------------------
+CSS3
+	1) what are the methods to use css in a html file?
+		i) inline		<p style="">
+		ii) internal		<style></style>
+		iii) external		<link rel="stylesheet" href="one.css">
+
+	tell me some css properties
+		color			changes the text color
+		background-color	changes the background color
+		background		changes the background		pic,color
+
+in css,
+	there are composite properties
+	border
+
+Selectors
+	ID				#btn1
+	class				.btn
+	element				p
+	pseudo selector			input[type='text']
+	universal			*
+	
+
+--------------------------
+Javascript
+	how to get the value of a text box?
+		document.getElementById
+		document.getElementsByName			name means, array of elements	name can be duplicate
+
+	what is the difference between
+		innerHTML and innerText
+			InnerText does not process html tags, they are rendered as text
+			InnerHTML processes the html tags and the output is rendered
+
+	know few events
+		click
+		dblclick
+		focus
+		blur			focus lost		cursor moves out of an element
+		keyup
+		keydown
+		change
+	
+	version we use is ES6		ECMA Script 6	
+		European Computer Manufacturer Association
+
+-----------------------------------
+RDBMS
+	Normalization?
+		is a scientific approach to split large table into smaller tables
+		in order to avoid redundancy. 
+	Normal Forms?
+		1NF, 2NF, 3NF, BCNF
+	
+	1NF	A table is said to be in 1NF only if every cell has precisely one value
+		suppose, "Rama Krishan" was found in a "name" column
+			now "Rama" is placed in "FirstName" column and "Krishna" is placed in "LastName" column
+
+		Address can be split into addressline1, addressline2 etc
+		so that we do business intelligence on that
+
+	2NF	A table should already be in 1NF and every attribute is dependent on the whole key not on partial 		dpendency
+	
+	3NF	A table should be in 2NF and every attribute is dependent on primary key 
+
+		Remove other attributes and form new table with relationship
+
+	BCNF	A table is said to be in Boyce Codd normal form if the table has more than 1 determinant
+		candidate key. Those candidate keys are composite and overlapping.
+
+		ex:		product id and inv id together is unique	(composite)
+					product id and customer id is unique
+					customer id and invid is unique
+
+	DeNormalization
+		sometimes, we may introduce additional column that may be redundant 
+		but will speed up query by avoiding joins
+
+		ex:
+			in attendance table, studentId only is enough. Name is not required
+			name can be found by using join with student table
+	
+			but we are adding student name also in attendance, is intentional adding of redundancy in 			order to improve query
+
+
+Operators
+		UNION	combine result of 2 queries (common results are displayed uniquely)	5+5 may not be 10
+		UNION ALL	combine result of 2 queries (including duplicates)	5+5 is always 10
+		INTERSECT	common values between 2 queries
+		MINUS		all records of first relation minus second
+		DIVIDE		only records that match with all records of second relation
+			ex:	a customer who purchased all the products in our store
+
+terminology
+		RELATION		(Table is an example for relation. Query result is not a table, but relation)
+		RELATIONSHIP		(between relations)
+		TUPLE/RECORD/ROW
+		DEGREE			NUMBER OF COLUMNS
+		ATTRIBUTE/FIELD/COLUMN
+		CELL
+		NULL			is not equals space or 0 or -	or "NULL" is a word but not null
+
+					where address IS null			not address=null (wrong)
+
+----------------------------------------------
+MySql
+	DML	INSERT, UPDATE, DELETE
+	DDL	CREATE, ALTER, DROP, TRUNCATE
+	DQL	SELECT
+	DCL	GRANT, REVOKE			we did not do this in mysql
+	TCL	COMMIT, ROLLBACK, SAVEPOINT
+
+
+	diff between WHERE and HAVING
+		WHERE is used to restrict rows
+		HAVING is used to restrict groups			
+			HAVING allows conditions on aggregate		COUNT(col1)>50
+
+	order by 	vs	group by
+		order by is used to sort the rows 
+		group by is used to get 1 result per group		(when we use aggregate)
+			SOME PEOPLE USE GROUP BY to get distinct values (which is poor) 
+			SELECT DISTINCT * FROM TABLE
+			SELECT * FROM TABLE GROUP BY COL1		not good practice
+
+	JOINS	
+		INNER
+		LEFT OUTER
+		RIGHT OUTER
+		FULL OUTER
+		SELF			EID, FNAME, LNAME, MANAGERID
+		EQUI
+		NON EQUI		join condition does not use = or != 		no common column
+					ex:		SALARY between min_sal and max_sal
+		CROSS			without join condition			cartesian product
+	SUB QUERIES
+		CORRELATED SUBQUERY
+
+	constraints
+		PK
+		FK
+		UNIQUE
+		NOT NULL
+		CHECK
+-----------------------------------------------------
+Core Java
+	primitive types		8
+		boolean		1bit
+		byte		1byte
+		short		2byte
+		int		4byte
+		char		2byte
+		long		8byte
+		float		4byte
+		double		8byte
+
+
+		how will you find the max value allowd in int
+		Integer.MAX_VALUE
+
+	programming constructs
+		if
+		else
+		else if
+		switch
+		while
+		do while
+		for
+		for each
+
+	OOPS
+	Collections
+		List	interface implemented by the following
+			LinkedList
+			ArrayList
+			
+			old/legacy		Vector	(is synchronized)
+				List maintains the order of elements (we add the elements in an order. THAT ORDER)
+				List allows duplicate elements
+		Set
+			HashSet		elements are ordered based on hashCode() method
+			TreeSet		elements are ordered based on Comparable/Comparator
+			LinkedHashSet	elements are ordered in the order in which the elements are added 
+				Set will not remember the order in which we add elements
+				Set rejects the duplicate entries	(no exception occur) but rejected
+				1, 2, 1, 3, 4		finally, 1,2,3,4 only found in the set	
+				How about null?		Set allows NULL. but second attempt to add null is rejected 							as duplicate
+
+		Map
+			is a key-value pair
+				put()		to add entry into the map
+				get()		to retrieve entry from map based on key. if key is not found, null
+
+		How do you iterate a map?
+		map.entrySet()		entry is a key-value pair.		entry.getKey()	entry.getValue()
+
+
+		Iterators		next()	hasNext()	remove()
+		ListIterators		can move forward or backward		previous()	hasPrevious()
+			the above are used by List collections
+
+		Set supports Iterator		BUT NOT LISTITERATOR		name itself is ListIterator
+		Set supports DescendingIterator	for reverse iteration
+
+		Collections.sort()		supports only List category collections
+		
+		Set elements order is decided while adding elements. Later it does not support reorder. We need to 		convert Set into List if we need to reorder the elements
+
+		ArrayList and Vector are the only collections that has "index"
+
+		They may ask you difference between array and collection
+			Arrays are static. They cannot grow or shrink. Arrays should know the size while creation.				Collections are dynamic. No need to know the size of collection while creating it.
+
+Thread
+		how many ways you can create Thread
+			1) extends Thread
+			2) implements Runnable
+
+		multi threading?
+			process vs thread
+		synchronization
+			synchronized block
+			synchronized method
+
+		volatile variable		is thread safe variable. It does not allow threads to keep the value 			in their cache. they are accessing the variable from main memory always.
+
+			Thread sync methods or inter thread communication methods
+		wait
+		notify
+		notifyAll
+		join
+		
+			what is the exception thrown by Thread.sleep()			InterruptedException
+
+IO
+		File
+		InputStream	(byte)	vs		Reader	(text)
+		OutputStream		vs		Writer 
+	
+
+IMPORTANT
+		Lambda
+			is used to implement "Functional Interface" in a simple way
+		Functional Interface
+			is an interface that has only 1 abstract method
+		
+		Stream APi
+			is used to query the collection.
+				filter
+				order
+				group by
+				collect
+
+			like we query the table in db
+			we can query a collection in java using stream api
+
+jdbc
+		diff		betwee 		Statement and PreparedStatement
+		ResultSetMetaData
+			we can get info from result set
+				how many columns
+				what is the column name using col number
+				col data type
+		DatabaseMetaData
+				what is the database product name, version, driver name, version, etc
+
+		execute()			for all operations
+		executeUpdate()			INSERT, UPDATE, DELETE,		returns int	rows affected
+		executeQuery()			SELECT				returns result set
+
+
+		CallableStatement		prepareCall
+			is used to execute a stored procedure / function
+
+Maven
+		is a build tool
+		provides project folder structure
+		and allow us to generate jar /war from the project
+		manages dependencies (jar files) in remote repo so that our project size is small that can be 			uploaded easily
+			what is pom.xml			Project Object Model 	defines the project configuration
+
+GIT
+		git allows maintaining versions of project deployed by various team members
+		we can track the changes using branches
+		we can merge the branches
+			clone
+			push
+			pull
+			switch		to branch
+			merge
+
+JQuery
+		selectors are same as css selectors
+
+
+Spring core
+		Depedency Injection			constructor based /	setter based
+		Inversion of Control			allows the user to decide which implementation is required
+
+Car
+	Engine		is tightly coupled		cannot change		rigid
+	Audio		is loosely coupled		your choice of audio
+
+
+class Sony implements Audio
+class Pioneer implements Audio
+
+	Audio in the car is an interface?	then it is loosely coupled. Supports either sony/pioneer
+	But Engine is not interface. It is a rigid object tightly coupled which cannot be changed
+
+
+IOC Container is responsible for providing us the object of Beans (rather than we create them. we do not create)
+
+	scope:
+		singleton		same instance is received everytime we get bean
+		prototype		different instance.......
+
+	autowire types:
+		autowire by name
+		autowire by type
+
+Junit:
+	Parameterized Test
+		allows test execution for each element found in a collection (like arraylist)
+
+Mockito:
+	while testing  service, we do not want to consume the service. For example, testing a  bank application should not do a real transaction, so we create MOCKS. and test the mocks. 
+	Mock will tell, if the following inputs are given then the following output should come.
+
+
+Code Quality
+	sonar qube to test our code quality
+	clean when coding
+	allows developers to learn good and standard coding practises while coding
+	no need to wait for testers
+
+Servlets are there even in spring mvc projects.		It is invisible but there is a dispatcher servlet that receives all the requests come to our application
+	this dispatcher servlet calls the controller method based on the url
+
+	this makes our mvc possible	
+		our controller is a pojo class that maps url to a method. This is possible because all the requests 		are received by dispatcher servlet and that servlet call our method
+
+	HttpServletRequest	received by servlet from browser
+	HttpServletResponse	sent from servlet to browser
+	HttpSession		session is private context between browser (user) and application 
+	ServletContext		represents the entire application
+	Content Type		response.setContentType(mimetype)		
+
+
+jsp	
+	JSP is translated into servlet at runtime. If compilation fails then we get JasperException
+	implicit objects
+		out
+		session
+		application
+		exception
+		response
+		request
+		page
+
+	Expression Language		EL	
+		${20}		prints 20
+	Custom tags
+	JSTL tags
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+Spring mvc:
+	1) application.properties
+		spring.mvc.view.prefix=/WEB-INF/jsp/
+		spring.mvc.view.suffix=.jsp
+
+	2) create the WEB-INF/jsp folder and add jsp files there
+	
+	3) if you follow conventions then 	@ComponentScan is not required
+		convention is to create the controller classes directly or sub package of base package
+		base package is the package that contains application.java that has main method
+
+Spring REST:
+	in mvc project we use @Controller
+	in REST project we use @RestController
+
+	Difference between @Controller and @RestController
+
+	in @Controller
+		a method returns "hello" means, 		hello is a url		ex:	hello.jsp
+	in @RestController
+		a method returns "hello" means,			hello is the value return. NOT url
+
+	EVen in @Controller	, we can change this
+
+		@Controller
+		public class MyController
+		{
+			@GetMapping("/")
+			@ResponseBody
+			public String home()
+			{
+				return "hello";	//since we used response body, then hello is value returned not url
+			}
+		}
+
+	thats why
+		@RestController		=	@Controller	+	@ResponseBody
+
+	in rest controller
+		GET		select
+		POST		insert
+		PUT		UPDATE
+		DELETE	
+		PATCH		is partial updation (only few fields)
+
+	we create rest api and we test them in post man
+
+	@RequestParam			url?key=value
+	@PathVariable			url/value
+	@RequestBody			objects send in body of post man 	JSON
+	
+
+in mvc controller
+	if there are multiple submit buttons
+		@RequestMapping(value="/add", method=RequestMethod.POST, params="add")		//add is the button
+
+
+Bootstrap
+-----------
+	grid model		12 column layout
+	box model		margin padding, width, style
+	typography		basic appearance of html elements when bootstrap is used
+
+	classes used
+
+	row
+	col-md-4
+	container
+	container-fluid			while resizing it will work like a fluid	as lesser margin
+	form-control
+	btn btn-success			success, warning, info, danger these are semantic classes
+	has-error
+	alert	alert-danger		error messages
+	table	table-bordered
+	nav
+	
+
+Angular
+	module
+	component
+	service
+	pipe
+	routing
+	navigation
+	@Input
+	@Output		eventemitter
+	ng-content
+	Observable		we received observable when httpclient called rest api
+				and we subscribed it			rxjs	Reactive Extension for JS
+
+	pipe types
+		char
+		number
+		date
+		currency
+	custom pipes
+			are classes that implements PipeTransform and override transform() method
+
+	declarations and imports done in 
+		app.module.ts
+
+	routing is done in 
+		app-routing.module.ts
+
+Microservices
+	arch provides granular sharing of resources rather than entire application being shared
+	
+Spring cloud
+	eureka server
+	eureka client
+	feign client
+
+Splunk
+	to research on the machine data	(log files)
+	add log file
+		and get analysis graph or bar chart for the happenings from the log file
